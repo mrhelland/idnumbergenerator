@@ -6,13 +6,13 @@ require_capability('tool/idnumbergenerator:manage', context_system::instance());
 
 $PAGE->set_context(context_system::instance());
 $PAGE->set_pagelayout('admin');
-$PAGE->set_url(new moodle_url('/admin/tool/idnumbergenerator/apply.php'));
+$PAGE->set_url(new moodle_url('/admin/tool/idnumbergenerator/user_apply.php'));
 $PAGE->set_title(get_string('pluginname', 'tool_idnumbergenerator'));
 $PAGE->set_heading(get_string('pluginname', 'tool_idnumbergenerator'));
 $PAGE->navbar->add(get_string('pluginname', 'tool_idnumbergenerator'),
     new moodle_url('/admin/tool/idnumbergenerator/index.php'));
 $PAGE->navbar->add(get_string('previewheading', 'tool_idnumbergenerator'),
-    new moodle_url('/admin/tool/idnumbergenerator/preview.php'));
+    new moodle_url('/admin/tool/idnumbergenerator/user_preview.php'));
 $PAGE->navbar->add(get_string('applychanges', 'tool_idnumbergenerator'));
 
 // Retrieve submitted records.
@@ -36,7 +36,7 @@ $count = 0;
 $updatedusers = [];
 
 if (!empty($selected)) {
-    $count = \tool_idnumbergenerator\manager::apply_changes($selected);
+    $count = \tool_idnumbergenerator\manager::apply_user_changes($selected);
 
     // Retrieve user info for display.
     $userids = array_column($selected, 'id');

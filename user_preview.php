@@ -6,18 +6,18 @@ require_capability('tool/idnumbergenerator:manage', context_system::instance());
 
 $field = required_param('field', PARAM_ALPHANUMEXT);
 $regex = urldecode(required_param('regex', PARAM_RAW));
-$overwrite = optional_param('overwrite', 0, PARAM_BOOL);
+$overwrite = optional_param('useroverwrite', 0, PARAM_BOOL);
 
 $PAGE->set_context(context_system::instance());
 $PAGE->set_pagelayout('admin');
-$PAGE->set_url(new moodle_url('/admin/tool/idnumbergenerator/preview.php'));
+$PAGE->set_url(new moodle_url('/admin/tool/idnumbergenerator/user_preview.php'));
 $PAGE->set_title(get_string('previewheading', 'tool_idnumbergenerator'));
 $PAGE->set_heading(get_string('previewheading', 'tool_idnumbergenerator'));
 $PAGE->navbar->add(get_string('pluginname', 'tool_idnumbergenerator'),
     new moodle_url('/admin/tool/idnumbergenerator/index.php'));
 $PAGE->navbar->add(get_string('previewheading', 'tool_idnumbergenerator'));
 
-$results = \tool_idnumbergenerator\manager::generate_idnumbers($field, $regex, $overwrite);
+$results = \tool_idnumbergenerator\manager::generate_user_idnumbers($field, $regex, $overwrite);
 
 // Handle possible duplicates.
 $duplicates = [];
@@ -32,7 +32,7 @@ if (!$results) {
 } else {
     echo html_writer::start_tag('form', [
         'method' => 'post',
-        'action' => new moodle_url('/admin/tool/idnumbergenerator/apply.php'),
+        'action' => new moodle_url('/admin/tool/idnumbergenerator/user_apply.php'),
         'id' => 'idnumber-form'
     ]);
     echo html_writer::empty_tag('input', [

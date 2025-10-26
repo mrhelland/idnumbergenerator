@@ -4,11 +4,12 @@ namespace tool_idnumbergenerator\form;
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/formslib.php');
 
-class generate_form extends \moodleform {
+class generate_user_form extends \moodleform {
     public function definition() {
         $mform = $this->_form;
 
-        $mform->addElement('header', 'hdr', get_string('heading', 'tool_idnumbergenerator'));
+        $mform->addElement('header', 'hdr', get_string('userheading', 'tool_idnumbergenerator'));
+        $mform->addElement('static', 'userpatterninfo', '', get_string('userdesc', 'tool_idnumbergenerator'));
 
         $mform->addElement('select', 'field', get_string('selectfield', 'tool_idnumbergenerator'), [
             'username' => get_string('username'),
@@ -21,8 +22,12 @@ class generate_form extends \moodleform {
         $mform->setDefault('regex', '^[^@]*');
         $mform->addRule('regex', null, 'required', null, 'client');
 
-        $mform->addElement('advcheckbox', 'overwrite', get_string('overwrite', 'tool_idnumbergenerator'));
-        $mform->setDefault('overwrite', 0);
+        // ➕ Add regex hints
+        $mform->addElement('static', 'regexhint', '',
+            get_string('regexhintlabel', 'tool_idnumbergenerator'));
+
+        $mform->addElement('advcheckbox', 'useroverwrite', get_string('overwrite', 'tool_idnumbergenerator'));
+        $mform->setDefault('useroverwrite', 0);
 
         $this->add_action_buttons(false, get_string('generate', 'tool_idnumbergenerator'));
     }
