@@ -3,7 +3,7 @@ $string['pluginname'] = 'ID Number Generator';
 $string['idnumbergenerator:manage'] = 'Manage ID number generation';
 
 $string['usersection'] = 'Generate unique user ID numbers';
-$string['userdesc'] = 'Generates an ID number using the selected source field and regex pattern.';
+$string['userdesc'] = 'Generates an ID number using the pattern <code>[lastname]-[firstname]__[regexpattern]</code>.';
 $string['userheading'] = 'User ID Generator';
 $string['userpreviewheading'] = 'Preview user ID numbers';
 $string['userapplyheading'] = 'Apply user ID number changes';
@@ -13,7 +13,7 @@ $string['regexhintlabel'] = 'Regex Hints: <ul><li>Select all characters until @<
 $string['invalidregex'] = 'The regular expression is invalid. Please correct it.';
 
 $string['activitysection'] = 'Activity ID Generator';
-$string['activitydesc'] = 'Generates ID numbers for all activities using the pattern <code>[activitytype]_[courseid]_[activityid]</code>.';
+$string['activitydesc'] = 'Generates ID numbers for all activities using the pattern <code>[activityname]__[activitytype]-[courseid]-[activityid]</code>.';
 $string['activitypreviewheading'] = 'Preview activity ID numbers';
 $string['activityapplyheading'] = 'Apply activity ID numbers';
 

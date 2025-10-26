@@ -48,13 +48,11 @@ if ($activityform->is_cancelled()) {
 echo $OUTPUT->header();
 
 // --- User form ---
-echo $OUTPUT->heading(get_string('usersection', 'tool_idnumbergenerator'), 3);
 $userform->display();
 
 echo html_writer::tag('hr', '');
 
 // --- Activity form ---
-echo $OUTPUT->heading(get_string('activitysection', 'tool_idnumbergenerator'), 3);
 $activityform->display();
 
 echo $OUTPUT->footer();
